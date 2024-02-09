@@ -1,0 +1,330 @@
+.Portfolio-Home {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.HeroSection {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+}
+
+.heroSection-right {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroSection-left {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark {
+  background: #000;
+  color: #fff;
+}
+
+.light {
+  background: #fff;
+  color: #000;
+}
+
+.image-of-devp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo {
+  max-width: 30vw;
+  height: 20vh;
+  border: none;
+  border-radius: 50%;
+  background-size: contain;
+}
+
+.devp-name {
+  color: var(--Black, #2b2b2b);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 123.6%;
+  text-transform: capitalize;
+}
+
+.occupation {
+  color: var(--Paragraph-Font, #767676);
+  font-kerning: none;
+  font-feature-settings: "calt" off;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-transform: capitalize;
+}
+
+.my-social-media-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.social-media-icons {
+  font-size: 1vw;
+}
+
+.social-media-link {
+  color: #000;
+  background: #ffb400;
+  border-radius: 50%;
+  width: 2vw;
+  height: 3.6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desc-about-devp {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.desc-about-devp-div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desc-all-div-same-text {
+  color: var(--Black, #2b2b2b);
+  font-kerning: none;
+  font-feature-settings: "calt" off;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem; /* 160% */
+  text-transform: capitalize;
+  background: var(--Yellow, #ffb400);
+  width: min-content;
+  padding: 0.5rem;
+}
+
+.desc-second-all-div-same-text {
+  color: var(--Black, #2b2b2b);
+  text-align: right;
+  font-kerning: none;
+  font-feature-settings: "calt" off;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 160% */
+  text-transform: capitalize;
+}
+
+.Languages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.lang {
+  text-align: start;
+}
+
+.all-type-of-language-ik {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.English {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.english-language-percentage-ik {
+  display: flex;
+  width: 87%;
+  justify-content: space-between;
+}
+
+.Hindi {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.Hindi-language-percentage-ik {
+  display: flex;
+  width: 87%;
+  justify-content: space-between;
+}
+
+.english-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.Hindi-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.skills-text {
+  color: var(--Black, #2b2b2b);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 123.6%;
+  text-transform: capitalize;
+}
+
+.skills-issue {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.HTML {
+  width: 100%;
+}
+
+.HTML-language-percentage-ik {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CSS-language-percentage-ik {
+  display: flex;
+  justify-content: space-between;
+}
+
+.React-Js-language-percentage-ik {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Tailwind-CSS-language-percentage-ik {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Js-language-percentage-ik {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HTML-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.CSS-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.Tailwind-CSS-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.React-Js-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.Js-percentage-ik-bar {
+  width: 13.75rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: #ffb400;
+}
+
+.extra-skills-text {
+  color: var(--Black, #2b2b2b);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 123.6%;
+  text-transform: capitalize;
+}
+
+.first-skills-issue {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.second-skills-issue {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.third-skills-issue {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.Fourth-skills-issue {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.download-cv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 13.75rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  background: var(--Yellow, #ffb400);
+  color: var(--Black, #2b2b2b);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  border: none;
+}
+
+.dwnld-icon {
+  font-size: 1.1vw;
+}
+
+.heroSection-middle{
+    width: 100%;
+}
