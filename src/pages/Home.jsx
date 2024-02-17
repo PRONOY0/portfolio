@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./home.css";
-import { RiHome2Fill } from "react-icons/ri";
 import { GoArrowRight } from "react-icons/go";
-import { FaFileAlt } from "react-icons/fa";
+import { FaArrowUpLong } from "react-icons/fa6";
 import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -10,54 +9,156 @@ import { AiFillInstagram } from "react-icons/ai";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
-import { NavLink, Link} from "react-router-dom";
+import { Link } from "react-scroll";
+import { CiLink } from "react-icons/ci";
 import { IoIosCall } from "react-icons/io";
 import ecobazarTemplate from "../assets/Thumbnail.png";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { GiConsoleController } from "react-icons/gi";
-import { RiFootballFill } from "react-icons/ri";
+import { FaMusic } from "react-icons/fa";
 import { RiNetflixFill } from "react-icons/ri";
 import { GiPaintBrush } from "react-icons/gi";
 import { CgCopyright } from "react-icons/cg";
 import { GiMoon } from "react-icons/gi";
 import { MdSunny } from "react-icons/md";
-import pfp from "../assets/nigga.jpg"
+import pfp from "../assets/Your Image 1.png";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
+import { FaArrowDownLong } from "react-icons/fa6";
+import mycvpdf from "../assets/mycv.pdf";
+import { useInView } from "react-intersection-observer";
+import { NavLink} from "react-router-dom";
+import hackerRankCertificate from "../assets/frontend_developer_react certificate.png";
+import codehelpCertificate from "../assets/codehelp-certificate.png";
+import restaurantProject from "../assets/resaurant website.png";
+import shopsyTemplate from '../assets/shopsy.png'
 
 const Home = () => {
+  const [dark, setDark] = useState(true);
 
-  const [dark,setDark] = useState(true);
+  const { ref: myRef, inView: myElementIsVisible } = useInView();
 
-  function darkThemeHandler(){
-    setDark((prev)=>!prev);
+  function darkThemeHandler() {
+    setDark((prev) => !prev);
+  }
+
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the user has scrolled to the top of the page
+      setIsAtTop(window.scrollY === 0);
+    };
+
+    // Add scroll event listener when component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove scroll event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const openPDF = () => {
+    // URL to the PDF file
+    const pdfURL = mycvpdf;
+
+    // Open the PDF in a new tab
+    window.open(pdfURL, "_blank");
+  };
+
+  const hackerrankCertificateOpen = () => {
+    // URL to the PDF file
+    const hackerRankCertificateURL = hackerRankCertificate;
+
+    // Open the PDF in a new tab
+    window.open(hackerRankCertificate, "_blank");
+  };
+
+  const codehelpCertificateeOpen = () => {
+    const codehelpCertificateURL = codehelpCertificate;
+
+    window.open(codehelpCertificateURL, "_blank");
+  };
+
+  function maileMeHandler() {
+    const recipientEmail = "pronoyroy880@gmail.com";
+    const subject = "Opportunity to Collaborate on Frontend Projects";
+    const body = `Hello,\n\nI'm impressed by your portfolio and would love to discuss collaborating on frontend projects. Your work showcases a strong understanding of design and development, and I believe we could create something great together.\n\nLooking forward to connecting!\n\nBest regards, [Your Name]`;
+
+    const emailUrl = `https://mail.google.com/mail/?view=cm&to=${recipientEmail}&su=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = emailUrl;
   }
 
   return (
     <div className={`${dark ? "dark" : "light"} Portfolio-Home`}>
-      <div className="HeroSection">
+      {isAtTop ? (
+        <Link
+          spy={true}
+          smooth={true}
+          duration={100}
+          to="footerDiv"
+          className="scroll-btn scroll-down"
+        >
+          <FaArrowDownLong className="scroll-up-icon" />
+        </Link>
+      ) : (
+        <Link
+          spy={true}
+          smooth={true}
+          duration={100}
+          to="HeroSection"
+          className="scroll-btn scroll-up"
+        >
+          <FaArrowUpLong className="scroll-up-icon" />
+        </Link>
+      )}
+
+      <div className="HeroSection" id="HeroSection">
         <div className="heroSection-left">
-          <div className="image-of-devp"><img src={pfp} className="profile-photo"/></div>
+          <div className="image-of-devp">
+            <img
+              src={pfp}
+              className="profile-photo"
+              alt="sidepictureofdeveloperphoto"
+            />
+          </div>
 
           <h4 className="devp-name">Pronoy Roy</h4>
 
           <p className="occupation">Front-End Developer</p>
 
           <div className="my-social-media-links">
-            <Link to="https://www.linkedin.com/in/pronoy-roy-3203361b6/" className="social-media-link">
+            <NavLink
+              to="https://www.linkedin.com/in/pronoy-roy-3203361b6/"
+              className="social-media-link"
+            >
               <FaLinkedinIn className="social-media-icons" />
-            </Link>
+            </NavLink>
 
-            <Link to="https://www.instagram.com/npc.pnop/" className="social-media-link">
+            <NavLink
+              to="https://www.instagram.com/npc.pnop/"
+              className="social-media-link"
+            >
               <AiFillInstagram className="social-media-icons" />
-            </Link>
+            </NavLink>
 
-            <Link to="https://www.instagram.com/npc.pnop/" className="social-media-link">
+            <NavLink
+              to="https://www.instagram.com/npc.pnop/"
+              className="social-media-link"
+            >
               <BsTwitterX className="social-media-icons" />
-            </Link>
+            </NavLink>
 
-            <Link to="https://www.instagram.com/npc.pnop/" className="social-media-link">
+            <NavLink
+              to="https://www.instagram.com/npc.pnop/"
+              className="social-media-link"
+            >
               <FaFacebookF className="social-media-icons" />
-            </Link>
+            </NavLink>
           </div>
 
           <div className="desc-about-devp">
@@ -81,7 +182,9 @@ const Home = () => {
 
             <div className="address-top-div desc-about-devp-div">
               <p className="desc-all-div-same-text">Address:</p>
-              <p className="desc-second-all-div-same-text">West Bengal, Kolkata</p>
+              <p className="desc-second-all-div-same-text">
+                West Bengal, Kolkata
+              </p>
             </div>
           </div>
 
@@ -117,7 +220,7 @@ const Home = () => {
                 <div className="HTML-language-percentage-ik">
                   <p className="HTMLLang">HTML</p>
                   <p className="HTML-percentage">100%</p>
-                </div> 
+                </div>
 
                 <div className="HTML-percentage-ik-bar"></div>
               </div>
@@ -222,7 +325,7 @@ const Home = () => {
             </div>
           </div>
 
-          <button className="download-cv">
+          <button className="download-cv" onClick={openPDF}>
             DOWNLOAD CV <MdDownload className="dwnld-icon" />
           </button>
         </div>
@@ -230,41 +333,102 @@ const Home = () => {
         <div className="heroSection-middle">
           <div className="heroSection-middle-Top">
             <div className="heroSection-middle-Top-left-part">
-              <div className="circle1"></div>
-              <div className="circle2"></div>
+              <svg
+                className="circle1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="7"
+                  stroke="#FFB400"
+                  stroke-opacity="0.8"
+                  stroke-width="2"
+                />
+              </svg>
+
               <div className="square1"></div>
 
               <h1 className="name-and-job">
-                I'm Pronoy Roy, a Front-end Developer crafting digital
-                experiences with code and creativity.
+                I'm Pronoy Roy, a{" "}
+                <span className="FrontEndDev">Front-end Developer</span>{" "}
+                crafting digital experiences with code and creativity.
               </h1>
 
               <p className="description-about-me">
-                Hello, I'm a front-end developer specializing in HTML, CSS,
-                JavaScript, Tailwind CSS, and React.js. With a passion for
-                crafting interactive and visually appealing websites and
-                applications, I leverage my expertise in React.js to implement
-                complex functionalities and create seamless user experiences.
-                Proficient in Tailwind CSS, I ensure consistent and responsive
-                designs across various devices. Continuously learning and
-                exploring new technologies, I am committed to staying updated in
-                the dynamic field of web development.
+                Hello, I'm a front-end developer skilled in HTML, CSS,
+                JavaScript, Tailwind CSS, and React.js. Passionate about
+                building captivating websites and apps, I excel in crafting
+                interactive experiences using React.js. With expertise in
+                Tailwind CSS, I ensure consistent designs on all devices. Always
+                learning and exploring new tech, I'm dedicated to staying ahead
+                in web development.
               </p>
 
-              <button className="HireMe">
+              <button className="HireMe" onClick={maileMeHandler}>
                 Hire Me
                 <GoArrowRight className="arrow-right" />
               </button>
 
-              <div className="circle3"></div>
-              <div className="square2"></div>
-              <div className="circle4"></div>
-
-              <div className="triangle1"></div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="circle3"
+              >
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="7"
+                  stroke="#05FF00"
+                  stroke-opacity="0.8"
+                  stroke-width="2"
+                />
+              </svg>
             </div>
 
             <div className="heroSection-middle-Top-right-part">
-              {/* //! <image src={}/> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="circle2"
+              >
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="7"
+                  stroke="#05FF00"
+                  stroke-opacity="0.8"
+                  stroke-width="2"
+                />
+              </svg>
+
+              {/* <img src={pfp} className="profilephotoForPortfolio" alt="profilephotoorphotoofdeveloper"/> */}
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="12"
+                viewBox="0 0 14 12"
+                fill="none"
+                className="triangle"
+              >
+                <path
+                  d="M1.80385 11L7 2L12.1962 11H1.80385Z"
+                  stroke="#FF2E00"
+                  stroke-opacity="0.8"
+                  stroke-width="2"
+                />
+              </svg>
             </div>
           </div>
 
@@ -304,7 +468,9 @@ const Home = () => {
                   fill="#FFB400"
                 />
               </svg>
+
               <p className="webdev-title">Web Development</p>
+
               <p className="service-webdev-title-desc">
                 Blog,E-commerce & Portfolio
               </p>
@@ -314,41 +480,120 @@ const Home = () => {
 
         <div className="heroSection-right">
           <button className="dark-theme" onClick={darkThemeHandler}>
-            {
-              dark ? (<GiMoon className="dark-theme-icon"/>) : (<MdSunny className="dark-theme-icon"/>)
-            }
+            {dark ? (
+              <GiMoon className="dark-theme-icon" />
+            ) : (
+              <MdSunny className="dark-theme-icon" />
+            )}
           </button>
 
           <nav className="navbar">
-            <div className="home">
-              <RiHome2Fill className="home-icon" />
-              <p className="home-text">Home</p>
-            </div>
+            <Link
+              spy={true}
+              smooth={true}
+              duration={100}
+              to="projects"
+              className="projects navbar-projects-section"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="65"
+                height="33"
+                viewBox="0 0 65 33"
+                fill="none"
+                className="comment-hover-text"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2 0C0.895431 0 0 0.89543 0 2V22C0 23.1046 0.89543 24 2 24H26.8039L32 33L37.1962 24H63C64.1046 24 65 23.1046 65 22V2C65 0.895431 64.1046 0 63 0H2Z"
+                  fill="#2B2B2B"
+                />
+                <text
+                  x="50%"
+                  y="45%"
+                  className="navigation-hover-text"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Projects
+                </text>
+              </svg>
+              <HiMiniWrenchScrewdriver className="project-icon navbars-icon" />
+            </Link>
 
-            <div className="CV">
-              <FaFileAlt className="resume-icon" />
-              <p className="cv-text">CV</p>
-            </div>
+            <Link
+              spy={true}
+              smooth={true}
+              duration={100}
+              to="educationDiv"
+              className="navbar-projects-section"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="65"
+                height="33"
+                viewBox="0 0 65 33"
+                fill="none"
+                className="comment-hover-text"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2 0C0.895431 0 0 0.89543 0 2V22C0 23.1046 0.89543 24 2 24H26.8039L32 33L37.1962 24H63C64.1046 24 65 23.1046 65 22V2C65 0.895431 64.1046 0 63 0H2Z"
+                  fill="#2B2B2B"
+                />
+                <text
+                  x="50%"
+                  y="45%"
+                  className="navigation-hover-text"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Education
+                </text>
+              </svg>
+              <RiGraduationCapFill className="Education-icon navbars-icon" />
+            </Link>
 
-            <div className="projects">
-              <HiMiniWrenchScrewdriver className="project-icon" />
-              <p className="project-text">Projects</p>
-            </div>
-
-            <div className="Education">
-              <RiGraduationCapFill className="Education-icon" />
-              <p className="Education-text">Education</p>
-            </div>
-
-            <div className="ContactUs">
-              <IoIosCall className="ContactUs-icon" />
-              <p className="ContactUs-text">Contact Me</p>
-            </div>
+            <Link
+              spy={true}
+              smooth={true}
+              duration={100}
+              to="contactDiv"
+              className="ContactUs navbar-projects-section"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="65"
+                height="33"
+                viewBox="0 0 65 33"
+                fill="none"
+                className="comment-hover-text"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2 0C0.895431 0 0 0.89543 0 2V22C0 23.1046 0.89543 24 2 24H26.8039L32 33L37.1962 24H63C64.1046 24 65 23.1046 65 22V2C65 0.895431 64.1046 0 63 0H2Z"
+                  fill="#2B2B2B"
+                />
+                <text
+                  x="50%"
+                  y="45%"
+                  className="navigation-hover-text"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Contact
+                </text>
+              </svg>
+              <IoIosCall className="ContactUs-icon navbars-icon" />
+            </Link>
           </nav>
         </div>
       </div>
 
-      <div className="Education">
+      <div className="Education" id="educationDiv">
         <h2 className="education-heading">Education</h2>
 
         <div className="college">
@@ -362,16 +607,27 @@ const Home = () => {
           </p>
         </div>
 
+        <HiOutlineAcademicCap className="cap-icon" />
         <div className="Certificates">
           <div className="hackerrank-certificate">
-            <Link className="frontend-engineer">FrontEnd Engineer</Link>
+            <NavLink
+              onClick={hackerrankCertificateOpen}
+              className="frontend-engineer"
+            >
+              Front End Engineer{" "}
+              <FaExternalLinkSquareAlt className="certificate-link" />
+            </NavLink>
             <p className="institution-hackerrank">Institution HackerRank</p>
           </div>
 
           <div className="codehelp">
-            <Link className="codehelp-fullStack-engineer">
-              Full Stack Engineer
-            </Link>
+            <NavLink
+              onClick={codehelpCertificateeOpen}
+              className="codehelp-fullStack-engineer"
+            >
+              Full Stack Engineer{" "}
+              <FaExternalLinkSquareAlt className="certificate-link" />
+            </NavLink>
             <p className="institution-codehelp">Institution CodeHelp</p>
           </div>
         </div>
@@ -380,74 +636,185 @@ const Home = () => {
       <div className="hobbies">
         <h2 className="hobbies-heading">Hobbies & Interest</h2>
         <div className="all-hobbies-list">
-          <GiConsoleController className="Controller" />
-          <RiFootballFill className="Football" />
-          <RiNetflixFill className="Netflix" />
-          <GiPaintBrush className="Brush" />
+          <div className="hobbies-div">
+            <GiConsoleController className="hobbies-icon" />
+            <p className="caption-text">Game</p>
+          </div>
+
+          <div className="hobbies-div">
+            <RiNetflixFill className="hobbies-icon" />
+            <p className="caption-text">Movies</p>
+          </div>
+
+          <div className="hobbies-div">
+            <GiPaintBrush className="hobbies-icon" />
+            <p className="caption-text">Drawing</p>
+          </div>
+
+          <div className="hobbies-div">
+            <FaMusic className="hobbies-icon" />
+            <p className="caption-text">Music</p>
+          </div>
         </div>
       </div>
 
-      <div className="Projects">
-        <h2 className="projects-heading">Projects</h2>
+      <div className="Projects" id="projects">
+        <h2 className="projects-heading">
+          Projects
+        </h2>
 
-        <div className="project-section">
+        <div ref={myRef} className={`${myElementIsVisible ? "show-project" : ""} project-section`}>
           <div className="EcoBazar-project">
+            <img src={ecobazarTemplate} className="ecobazar-template" alt="ecobazar logo"/>
+
+            <div className="ecobazar-project-about-section">
+              <p className="EcoBazar-text">EcoBazar(Mega Project)</p>
+
+              <p className="Ecobazar-desc">
+                Introducing Ecobazar, your ultimate online destination for fresh
+                produce and groceries. With Ecobazar, you can conveniently shop
+                for a wide variety of products ranging from fresh vegetables,
+                fruits, meats, and more, all from the comfort of your
+                home.Ecobazar offers a seamless shopping experience, with a
+                user-friendly interface and secure payment options. Say goodbye
+                to long queues and crowded aisles – Ecobazar brings the market
+                to your fingertips, ensuring that you have access to quality
+                products delivered right to your doorstep. Experience the
+                convenience of online shopping with Ecobazar today!
+              </p>
+
+              <div className="links-and-github">
+                <NavLink
+                  to="https://github.com/PRONOY0/Grocery-Website"
+                  className="links-also-github"
+                >
+                  <FaGithub className="link-icon"/>
+                </NavLink>
+
+                <NavLink
+                  to="https://grocery-website-seven.vercel.app/"
+                  className="links-also-github"
+                >
+                  <CiLink className="link-icon"/>
+                </NavLink>
+              </div>
+            </div>
+          </div>
+
+          <div className={`${myElementIsVisible ? "show-project" : ""} Gericht-project`}>
+            <div className="Gericht-project-about-section">
+              <p className="Gericht-text">GERICHT</p>
+
+              <p className="Gericht-desc">
+                Introducing GERICHT, your premier online hub for culinary
+                delights and dining convenience. With GERICHT, you can
+                effortlessly explore a diverse array of delectable dishes,
+                conveniently book your table, or order your favorite meals from
+                our carefully curated menu – all from the comfort of your home.
+                Experience the ease of GERICHT's user-friendly interface and
+                secure payment options, eliminating the hassle of waiting in
+                queues or navigating crowded restaurants. Whether you're craving
+                a gourmet experience or a cozy meal at home, GERICHT ensures
+                top-notch quality delivered straight to your doorstep. Join us
+                in embracing the future of dining with GERICHT – where every
+                culinary desire is just a click away. Start your gastronomic
+                journey today!
+              </p>
+
+              <div className="links-and-github">
+                <NavLink
+                  to="https://github.com/PRONOY0/restaurant-website"
+                  className="links-also-github"
+                >
+                  <FaGithub />
+                </NavLink>
+
+                <NavLink
+                  to="https://restaurant-website-alpha-seven.vercel.app/"
+                  className="links-also-github"
+                >
+                  <CiLink className="link-icon" />
+                </NavLink>
+              </div>
+            </div>
             <img
-              src={ecobazarTemplate}
+              src={restaurantProject}
               className="ecobazar-template"
               alt="ecobazar logo"
             />
-            <p className="EcoBazar-text">EcoBazar</p>
-            <p className="Ecobazar-desc">
-              Introducing Ecobazar, your ultimate online destination for fresh
-              produce and groceries. With Ecobazar, you can conveniently shop
-              for a wide variety of products ranging from fresh vegetables,
-              fruits, meats, and more, all from the comfort of your
-              home.Ecobazar offers a seamless shopping experience, with a
-              user-friendly interface and secure payment options. Say goodbye to
-              long queues and crowded aisles – Ecobazar brings the market to
-              your fingertips, ensuring that you have access to quality products
-              delivered right to your doorstep. Experience the convenience of
-              online shopping with Ecobazar today!
-            </p>
+          </div>
 
-            <div className="links-and-github">
-              <Link to="https://github.com/PRONOY0/Grocery-Website">
-                <FaGithub />
-              </Link>
+          <div className="EcoBazar-project">
+            <img
+              src={shopsyTemplate}
+              className="ecobazar-template"
+              alt="ecobazar logo"
+            />
 
-              <Link to="https://grocery-website-seven.vercel.app/">
-                <FaExternalLinkSquareAlt className="link-icon" />
-              </Link>
+            <div className="ecobazar-project-about-section">
+              <p className="EcoBazar-text">Shopsy</p>
+
+              <p className="Ecobazar-desc">
+                Introducing ShopSy, your premier online destination for the
+                latest fashion trends and wardrobe essentials! With ShopSy, you
+                can effortlessly browse and order a wide array of clothing items
+                tailored to your unique style preferences, all from the comfort
+                of your own home. ShopSy offers a seamless shopping experience,
+                boasting a user-friendly interface and secure payment options,
+                ensuring your transactions are smooth and worry-free. Bid
+                farewell to crowded malls and long checkout lines – ShopSy
+                brings the boutique experience directly to you, with quality
+                garments delivered right to your doorstep. Whether you're
+                seeking chic dresses, cozy sweaters, trendy accessories, or
+                stylish footwear, ShopSy has you covered. Embrace the
+                convenience of online shopping and elevate your wardrobe with
+                ShopSy today!
+              </p>
+
+              <div className="links-and-github">
+                <NavLink
+                  to="https://github.com/PRONOY0/Shopsy"
+                  className="links-also-github"
+                >
+                  <FaGithub />
+                </NavLink>
+
+                <NavLink
+                  to="https://shopsy-ecru.vercel.app/"
+                  className="links-also-github"
+                >
+                  <CiLink className="link-icon" />
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="contactUs">
+      <div className="contactUs" id="contactDiv">
         <div className="leave-info">
           <h2 className="leave-info-text">Leave us your info</h2>
 
-          <label>
-            Your Full Name(Required)
+          <label className="contact-us-label">
+            <p className="contact-us-text">Your Full Name(Required)</p>
             <input
               type="text"
               placeholder="Your Full Name"
-              className="full-name"
+              className="input-field-contact-us"
             />
           </label>
 
-          <label>
-            Your Email(Required)
+          <label className="contact-us-label">
+            <p className="contact-us-text">Your Email(Required)</p>
             <input
               type="email"
               placeholder="Your Email"
-              className="your-email"
+              className="input-field-contact-us"
             />
           </label>
 
-          <label>
-            Your Message
+          <label className="contact-us-label">
+            <p className="contact-us-text">Your Message</p>
             <textarea
               className="message"
               draggable="false"
@@ -470,6 +837,7 @@ const Home = () => {
               height="18"
               viewBox="0 0 18 18"
               fill="none"
+              className="location-icon"
             >
               <g clip-path="url(#clip0_2_2690)">
                 <path
@@ -507,6 +875,7 @@ const Home = () => {
               height="18"
               viewBox="0 0 18 18"
               fill="none"
+              className="mail-icon"
             >
               <g clip-path="url(#clip0_2_2710)">
                 <path
@@ -529,9 +898,56 @@ const Home = () => {
         </div>
       </div>
 
-      <footer>
-        <div className="line"></div>
-        <p className="copyright"><CgCopyright/> Copyright 2024. Made by Tomás Fernandes</p>
+      <footer className="foot-section" id="footerDiv">
+        <div className="foot-section-upper-part">
+          <div className="foot-section-upper-part-leftmost">
+            <h2 className="name-of-devp">Pronoy Roy</h2>
+            <p className="devp-desc">
+              A dedicated Frontend Web Developer specializing in crafting
+              compelling and user-centric Frontend experiences for websites and
+              web applications.
+            </p>
+          </div>
+
+          <div className="foot-section-upper-part-rightmost">
+            <h2 className="social-text">Social</h2>
+            <div className="my-social-media-foot-links">
+              <NavLink
+                to="https://www.linkedin.com/in/pronoy-roy-3203361b6/"
+                className="social-media-link-footer"
+              >
+                <FaLinkedinIn className="social-media-icons" />
+              </NavLink>
+
+              <NavLink
+                to="https://www.instagram.com/npc.pnop/"
+                className="social-media-link-footer"
+              >
+                <AiFillInstagram className="social-media-icons" />
+              </NavLink>
+
+              <NavLink
+                to="https://www.instagram.com/npc.pnop/"
+                className="social-media-link-footer"
+              >
+                <BsTwitterX className="social-media-icons" />
+              </NavLink>
+
+              <NavLink
+                to="https://www.instagram.com/npc.pnop/"
+                className="social-media-link-footer"
+              >
+                <FaFacebookF className="social-media-icons" />
+              </NavLink>
+            </div>
+          </div>
+        </div>
+
+        <div className="in-between-line"></div>
+
+        <div className="foot-section-lower-part">
+          <CgCopyright /> Copyright 2024
+        </div>
       </footer>
     </div>
   );
