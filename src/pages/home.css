@@ -7,14 +7,41 @@
   min-height: 100vh;
 }
 
+.heroSection-middle-Top-left-part {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 html {
   overflow-x: hidden;
+}
+
+input {
+  outline: none;
+}
+
+.coding-animation{
+  width: 30vw;
+  height: 30rem;
 }
 
 .HeroSection {
   display: flex;
   width: 100vw;
   justify-content: space-evenly;
+}
+
+.heroSection-middle {
+  height: fit-content;
+}
+
+.shopsy-template {
+  width: 25vw;
+  min-height: 40vh;
+  object-fit: contain;
+  border: 2px solid;
+  border-radius: 1rem;
 }
 
 .dark-theme {
@@ -48,8 +75,12 @@ html {
 }
 
 .dark {
-  background: #000;
+  background: radial-gradient(circle at 50% 50%, #808080 0%, #1F1F1F 100%);
   color: #fff;
+
+  .heroSection-middle-Top-right-part {
+    display: none;
+  }
 
   .scroll-up {
     color: #fff;
@@ -135,19 +166,18 @@ html {
     color: #000;
   }
 
-  .EcoBazar-text{
+  .EcoBazar-text {
     color: #fff;
   }
 
-  .myService-heading{
+  .myService-heading {
     color: #ffb400;
   }
 
-  .Gericht-text{
+  .Gericht-text {
     color: #fff;
   }
 }
-
 
 .light {
   background: #fff;
@@ -472,10 +502,12 @@ html {
   font-size: 1vw;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5rem;
+  line-height: 160%;
   width: 70%;
   flex-shrink: 0;
 }
+
+
 
 .HireMe {
   display: flex;
@@ -634,6 +666,7 @@ html {
 
 .frontend-engineer {
   font-size: 0.875vw;
+  width: fit-content;
   color: #fff;
 }
 
@@ -667,7 +700,6 @@ html {
   font-size: 1.3vw;
 }
 
-
 .hobbies-div {
   display: flex;
   flex-direction: column;
@@ -675,7 +707,7 @@ html {
 }
 
 .caption-text {
-  color: #767676;
+  color: #fff;
 }
 
 .projects-heading {
@@ -686,7 +718,7 @@ html {
 
 .ecobazar-template {
   width: 25vw;
-  height: 30vh;
+  min-height: 40vh;
   object-fit: contain;
   border: 2px solid;
   border-radius: 1rem;
@@ -713,7 +745,8 @@ html {
   max-width: 70%;
   text-align: start;
   margin-left: 1rem;
-  font-size: 0.775vw;
+  font-size: 0.9vw;
+  line-height: 150%;
 }
 .ecobazar-project-about-section {
   display: flex;
@@ -803,6 +836,11 @@ textarea {
   cursor: pointer;
 }
 
+.message {
+  outline: none;
+  font-size: 1.1vw;
+}
+
 .contact-information-text {
   font-size: 1.5vw;
 }
@@ -866,8 +904,10 @@ textarea {
 
 .cap-icon {
   font-size: 4vw;
-  margin-left: 40vw;
-  position: absolute;
+}
+
+.heading-cap-icon{
+  display: flex;
 }
 
 .foot-section {
@@ -879,7 +919,7 @@ textarea {
   align-items: center;
   gap: 2rem;
   min-height: 15vh;
-  background-color: #ffb300cd;
+  background: linear-gradient(202deg, #FFEB3B 0%, #FFC107 100%);
 }
 
 .copyright {
@@ -1028,7 +1068,7 @@ textarea {
   border-radius: 100%;
 }
 
-.project-section{
+.project-section {
   opacity: 0;
   transform: translateX(-250px); /* Start the projects off the screen */
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1041,13 +1081,19 @@ textarea {
   transition-delay: 1s; /* Apply the same delay when showing */
 }
 
-.Gericht-project{
+.Gericht-project {
   display: flex;
+  line-height: 150%;
   justify-content: space-between;
   max-width: 100%;
 }
 
-.Gericht-text{
+.coder-animation{
+  width: 250px;
+  height: 250px;
+}
+
+.Gericht-text {
   color: var(--Black, #2b2b2b);
   font-size: 1.325vw;
   font-style: normal;
@@ -1058,18 +1104,18 @@ textarea {
   text-transform: capitalize;
 }
 
-.Gericht-desc{
-  font-size: .775vw;
-  max-width:95%;
+.Gericht-desc {
+  font-size: 0.9vw;
+  max-width: 95%;
   text-align: start;
   margin-left: 1rem;
 }
 
-.Gericht-project-about-section{
+.Gericht-project-about-section {
   width: 100%;
 }
 
-.project-section{
+.project-section {
   opacity: 0;
   transform: translateX(-250px); /* Start the projects off the screen */
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1082,8 +1128,7 @@ textarea {
   transition-delay: 1s; /* Apply the same delay when showing */
 }
 
-
-.Gericht-project{
+.Gericht-project {
   opacity: 0;
   transform: translateX(650px); /* Start the projects off the screen */
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1092,148 +1137,334 @@ textarea {
 
 .Gericht-project.show-project {
   opacity: 1;
-  transform: translateX(0); /* Move the projects into view */
-  transition-delay: 1s; /* Apply the same delay when showing */
+  transform: translateX(0); 
+  transition-delay: 1s;
 }
 
-.Education{
+.Education {
   display: flex;
   flex-direction: column;
 }
 
+.for-mobile-hero-section {
+  display: flex;
+}
 
+.heading-cap-icon{
+  margin: 0 auto;
+}
 
-
-@media (min-width:1024px) and (max-width:1440px) {
-  .social-media-link{
-    width: 3vw;
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .social-media-link {
+    width: 2.5vw;
   }
 
-  .desc-second-all-div-same-text{
-    font-size: 1.2vw;
-  }
-
-  .desc-all-div-same-text{
-    font-size: 1.2vw;
-  }
-  
-  .lang{
-    font-size: 1.5vw;
-  }
-
-  .dwnld-icon {
-    font-size: 1.5vw;
-  }
-
-  .dwnld-icon {
-    font-size: 1.5vw;
-  }
-
-  .description-about-me{
-    font-size: 1.5vw;
-  }
-
-  .HireMe{
-    font-size: 1.4vw;
-  }
-  
-  .arrow-right{
-    font-size: 1.4vw;
-  }
-
-  .dark-theme-icon{
-    font-size: 2.7vw;
-  }
-
-  .navbars-icon{
+  .devp-name{
     font-size: 2vw;
   }
 
-  .comment-hover-text{
+  .occupation{
+    font-size: 1.5vw;
+  }
+
+  .Languages{
+    margin-left: 2rem;
+  }
+  
+  .skill-issue-div{
+    margin-left: 2.5rem;
+  }
+
+  .download-cv{
+    margin-left: 2.5rem;
+  }
+
+  .english-language-percentage-ik{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .Hindi-language-percentage-ik{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .for-mobile-hero-section {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .desc-second-all-div-same-text {
+    font-size: 1.2vw;
+  }
+
+  .desc-all-div-same-text {
+    font-size: 1.2vw;
+  }
+
+  .lang {
+    font-size: 1.5vw;
+  }
+
+  .dwnld-icon {
+    font-size: 1.5vw;
+  }
+
+  .dwnld-icon {
+    font-size: 1.5vw;
+  }
+
+  .description-about-me {
+    font-size: 1.5vw;
+  }
+
+  .HireMe {
+    font-size: 1.4vw;
+  }
+
+  .arrow-right {
+    font-size: 1.4vw;
+  }
+
+  .dark-theme-icon {
+    font-size: 2.7vw;
+  }
+
+  .navbars-icon {
+    font-size: 2vw;
+  }
+
+  .comment-hover-text {
     width: min-content;
   }
 
-  .navigation-hover-text{
+  .navigation-hover-text {
     font-size: 1.1vw;
   }
 
-  .myService-description{
+  .myService-description {
     font-size: 1.5vw;
     text-align: start;
     margin-left: 1.1rem;
   }
 
-  .education-heading{
+  .education-heading {
     font-size: 2vw;
   }
 
-  .clg-name{
+  .clg-name {
     font-size: 1.8vw;
   }
 
-  .Education{
+  .Education {
     margin-left: 5rem;
   }
 
-  .details-abt-degree{
+  .details-abt-degree {
     font-size: 1.4vw;
   }
 
-  .frontend-engineer{
+  .frontend-engineer {
     font-size: 1.4vw;
   }
 
-  .codehelp-fullStack-engineer{
+  .codehelp-fullStack-engineer {
     font-size: 1.4vw;
+    width: fit-content;
   }
 
-  .hobbies-heading{
-    font-size: 2.1vw;
-    text-align: center;
-  }
-
-  .hobbies-icon{
-    font-size: 2.2vw;
-  }
-
-  .all-hobbies-list{
-    gap: 4rem;
+  .hobbies{
+    margin-left: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .projects-heading{
+    margin-left: 5rem;
+  }
+
+  .hobbies-heading {
+    font-size: 3vw;
+    text-align: center;
+  }
+
+  .hobbies-icon {
+    font-size: 2.2vw;
+  }
+
+  .all-hobbies-list {
+    gap: 4rem;
+  }
+
+  .projects-heading {
     font-size: 4vw;
   }
 
   .ecobazar-template {
     width: 35vw;
-    height: 40vh;
+    min-height: 40vh;
   }
 
-  .EcoBazar-text{
+  .EcoBazar-text {
     font-size: 2vw;
   }
 
-  .Ecobazar-desc{
+  .Ecobazar-desc {
     font-size: 1.1vw;
   }
 
-  .Gericht-desc{
+  .Gericht-desc {
     font-size: 1.2vw;
   }
 
-  .links-also-github{
+  .links-also-github {
     font-size: 1.6vw;
   }
 
-  .links-and-github{
+  .links-and-github {
     gap: 1rem;
   }
 
-  .foot-section-upper-part{
+  .foot-section-upper-part {
     padding-left: 3rem;
   }
 
-  .social-media-icons{
+  .social-media-icons {
+    font-size: 1.2vw;
+  }
+
+  .Ecobazar-desc {
+    font-size: 1.3vw;
+  }
+
+  .EcoBazar-text {
     font-size: 2vw;
+  }
+
+  .Gericht-text {
+    font-size: 2vw;
+  }
+
+  .Gericht-desc {
+    font-size: 1.3vw;
+  }
+
+  .shopsy-template {
+    width: 25vw;
+    min-height: 40vh;
+    object-fit: contain;
+    border: 2px solid;
+    border-radius: 1rem;
+  }
+
+  .input-field-contact-us {
+    font-size: 1.3vw;
+  }
+
+  .message {
+    font-size: 1.1vw;
+    outline: none;
+  }
+
+  .contactUs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10rem;
+    justify-content: flex-start;
+  }
+
+  .leave-info-text{
+    font-size: 4vw;
+  }
+
+  .contact-us-text{
+    text-align: start;
+  }
+
+  .contact-us-text{
+    text-align: start;
+  }
+
+  .contact-us-text{
+    text-align: start;
+  }
+
+  .contact-information{
+    margin: 0 auto;
+    padding-bottom: 10rem;
+  }
+
+  .Languages {
+    padding-left: 0rem;
+  }
+
+  .heading-cap-icon{
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .for-mobile-hero-section {
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+
+  .name-and-job {
+    font-size: 4vw;
+  }
+
+  .FrontEndDev {
+    font-size: 5vw;
+  }
+
+  .description-about-me {
+    font-size: 3vw;
+  }
+
+  .HireMe {
+    font-size: 3.3vw;
+  }
+
+  .heroSection-middle-Top-right-part svg {
+    display: none;
+  }
+
+  .myService-heading {
+    font-size: 5vw;
+  }
+
+  .myService-description {
+    font-size: 3vw;
+    text-align: start;
+    margin-left: 1rem;
+  }
+
+  .dark-theme-icon {
+    font-size: 7vw;
+  }
+
+  .navbars-icon {
+    font-size: 5vw;
+  }
+
+  .navigation-hover-text {
+    font-size: 2.5vw;
+  }
+
+  .heroSection-middle-Bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .desktop {
+    margin-left: 2rem;
+  }
+
+  .heroSection-left {
+    margin: 0 auto;
   }
 }
